@@ -1,0 +1,17 @@
+
+.homepage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepage-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5vh;
+    text-align: center;
+    width: 50vw;
+    gap: 5vh;
+}
