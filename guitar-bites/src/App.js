@@ -25,21 +25,21 @@ function App() {
     <Router>
       <div>
         <nav className="navBar">
-        <Link to={"/"}><h3>Home</h3></Link>
-          <Link to={"/Editor"}><h3>Editor</h3></Link>
-          <Link to="/SongList"><h3>Song List</h3></Link>
+        <Link to={"/GuitarBites/"}><h3>Home</h3></Link>
+          <Link to={"GuitarBites/Editor"}><h3>Editor</h3></Link>
+          <Link to="/GuitarBites/SongList"><h3>Song List</h3></Link>
         
         </nav>
         <Routes>
-          <Route path="/song/:songKey" element={<SongDetail />} />
-          <Route path="/" element={<Homepage />}/>
-          <Route path="/Editor" element={<Editor />}/>
-          <Route path="/SongList" element = {
+          <Route path="/GuitarBites/song/:songKey" element={<SongDetail />} />
+          <Route path="/GuitarBites/" element={<Homepage />}/>
+          <Route path="/GuitarBites/Editor" element={<Editor />}/>
+          <Route path="/GuitarBites/SongList" element = {
               <ul>
               {Object.keys(songs).map((songKey) => (
                 <li key={songKey}>
                   
-                  <Link to={`/song/${songKey}`}>{songs[songKey].Name}</Link>
+                  <Link to={`/GuitarBites/song/${songKey}`}>{songs[songKey].Name}</Link>
                 </li>
               ))}
             </ul>
