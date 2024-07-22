@@ -61,7 +61,7 @@ const SongDetail = () => {
     <div className="song-display">
 
       <h3>{song.Name}</h3>
-      <div id="note-display">
+      <div id="note-display-list">
                 {displayedNotes.map((str, index) => (
                     <div className="tab-string" key={index}>
                     {str}

@@ -4,8 +4,10 @@ import Guitar from 'react-guitar'
 import React from 'react';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { storage } from '../firebaseConfig';
+import { useNavigate } from 'react-router-dom'; 
 
 function Editor() {
+  const navigate = useNavigate();
   const [notes, setNotes] = React.useState([])
   const [strings, setStrings] = React.useState([0, 0, 0, 0, 0, 0])
 
@@ -96,6 +98,8 @@ function Editor() {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             setDownloadURL(url);
             console.log('File available at', url);
+            redirectToSongPage(newSong["Name"]); 
+
           });
         }
       );
@@ -107,6 +111,11 @@ function Editor() {
   // Function to handle saving the creation name
   const saveCreation = (name) => {
     handleAddSong({"Name": name, "Song": notes});
+  };
+
+  const redirectToSongPage = (songName) => {
+    const formattedName = songName.replace(/\s+/g, '-').toLowerCase(); // Format the song name to create the URL
+    navigate(`/songs/${formattedName}`); // Navigate to the song page
   };
 
   return (
@@ -129,6 +138,7 @@ function Editor() {
                     <form onSubmit={handleSubmit} id="submit-form">
                     {/* Step 2: Create an input field */}
                     <input
+                        id="title-enter"
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}

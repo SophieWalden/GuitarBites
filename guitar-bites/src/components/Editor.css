@@ -1,5 +1,26 @@
 
 
+#note-display{
+  font-family: 'Courier New', 'Courier New', Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  width: 65vw;
+  overflow-x: auto;
+}
+
+@media (max-width: 1065px) {
+  #note-display{
+      font-size: 16px; /* Constant value */
+  }
+}
+
+/* Font size for screens 600px and above */
+@media (min-width: 1066px) {
+  #note-display {
+      font-size: 1.5vw; /* Percentage of viewport width */
+  }
+}
+
 .guitar-editor{
     display: flex;
     justify-content: space-evenly;
@@ -87,4 +108,10 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    width: 10vw;
+}
+
+#title-enter{
+  width: 10vw;
+
 }

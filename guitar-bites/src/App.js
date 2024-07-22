@@ -35,14 +35,19 @@ function App() {
           <Route path="/" element={<Homepage />}/>
           <Route path="/Editor" element={<Editor />}/>
           <Route path="/SongList" element = {
-              <ul>
+              <div id="song-list-container">
               {Object.keys(songs).map((songKey) => (
-                <li key={songKey}>
-                  
-                  <Link to={`/song/${songKey}`}>{songs[songKey].Name}</Link>
-                </li>
-              ))}
-            </ul>
+                  <div className="song-holder">
+
+                  <Link to={`/song/${songKey}`} className="song-link"><div className="displayed-song" key={songKey}>
+                    
+                    {songs[songKey].Name}
+                  </div></Link>
+          
+                  </div>
+                ))}
+
+            </div>
           }/>
         </Routes>
       </div>
