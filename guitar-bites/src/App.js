@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import Editor from './components/Editor';
 import { fetchSongsData } from './fetchSongsData';
 import SongDetail from './SongDetail';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Homepage from './components/Homepage';
 
 function App() {
@@ -25,21 +25,21 @@ function App() {
     <Router>
       <div>
         <nav className="navBar">
-        <Link to={"/GuitarBites/"}><h3>Home</h3></Link>
-          <Link to={"GuitarBites/Editor"}><h3>Editor</h3></Link>
-          <Link to="/GuitarBites/SongList"><h3>Song List</h3></Link>
+        <Link to={"/"}><h3>Home</h3></Link>
+          <Link to={"/Editor"}><h3>Editor</h3></Link>
+          <Link to="/SongList"><h3>Song List</h3></Link>
         
         </nav>
         <Routes>
-          <Route path="/GuitarBites/song/:songKey" element={<SongDetail />} />
-          <Route path="/GuitarBites/" element={<Homepage />}/>
-          <Route path="/GuitarBites/Editor" element={<Editor />}/>
-          <Route path="/GuitarBites/SongList" element = {
+          <Route path="/song/:songKey" element={<SongDetail />} />
+          <Route path="/" element={<Homepage />}/>
+          <Route path="/Editor" element={<Editor />}/>
+          <Route path="/SongList" element = {
               <ul>
               {Object.keys(songs).map((songKey) => (
                 <li key={songKey}>
                   
-                  <Link to={`/GuitarBites/song/${songKey}`}>{songs[songKey].Name}</Link>
+                  <Link to={`/song/${songKey}`}>{songs[songKey].Name}</Link>
                 </li>
               ))}
             </ul>
