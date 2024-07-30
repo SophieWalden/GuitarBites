@@ -3,15 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    background-image: url('https://i.imgur.com/PFwedDw.jpeg');
+    width: 100vw;
+    height: 95vh;
 }
 
 .homepage-content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5vh;
-    text-align: center;
-    width: 50vw;
-    gap: 5vh;
+    top: 0;
+    right: 10vw;
 }

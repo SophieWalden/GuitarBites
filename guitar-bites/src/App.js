@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <div>
-        <nav className="navBar">
+        <nav className="navBar font-semibold">
         <Link to={"/"}><h3>Home</h3></Link>
           <Link to={"/Editor"}><h3>Editor</h3></Link>
           <Link to="/SongList"><h3>Song List</h3></Link>

@@ -29,16 +29,57 @@ const SongDetail = () => {
     if (song == null)  return;
     let display = [];
 
-      for (let i = 0; i < 6; i++){
-        let temp = `${['e','B','G','D','A','E'][i]}|` + "-".repeat(spacing)
+    // First find if there are hammer on, slides, or pull offs in certain locations
+    let specialCharacters = [];
+    for (let j = 0; j < song.Song.length; j++){
+      if (["h","p","/"].includes(song.Song[j].fret)){
+        specialCharacters.push(j - 1);
+        specialCharacters.push(j);
+      }
+    }
+  
+    // Initalize each string
+    for (let i = 0; i < 6; i++){
+      display.push(`${['e','B','G','D','A','E'][i]}|` + "-".repeat(spacing));
+    }
 
-
-        for (let j = 0; j < song.Song.length; j++){
-            temp += (song.Song[j].string == i ? song.Song[j].fret.toString() : '-') + "-".repeat(spacing - 1);
+    let chordLine = 0;
+    let chordStarted = false;
+    let fretsSeen = []
+      for (let j = 0; j < song.Song.length; j++){
+        if (song.Song[j].multistring && !chordStarted){
+          chordStarted = true;
+          chordLine = display[0].length;
+          fretsSeen = []
         }
 
-        display.push(temp);
+        // End of chord
+        if (chordStarted && !song.Song[j].multistring){
+          chordStarted = false;
+
+          for (let i = 0; i < 6; i++){
+
+              display[i] += "-".repeat(spacing - (fretsSeen.includes(i) ? 1 : 0));
+          }
+
+        }
+
+        for (let i = 0; i < 6; i++){
+
+          if (chordStarted && song.Song[j].string == i && !fretsSeen.includes(i)){
+            fretsSeen.push(i)
+            display[i] += (song.Song[j].string == i ? song.Song[j].fret.toString() : '') + "";
+          }else if(chordStarted){
+
+          }
+          else{
+            let ignoreExtraSpace = specialCharacters.includes(j)  
+            display[i] += (song.Song[j].string == i ? song.Song[j].fret.toString() : '-') + "-".repeat(ignoreExtraSpace ? 0 : spacing - 1);
+          }
+         
+        }
       }
+
 
     setDisplayedNotes(display);
   }

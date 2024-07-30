@@ -10,13 +10,14 @@ function Editor() {
   const navigate = useNavigate();
   const [notes, setNotes] = React.useState([])
   const [strings, setStrings] = React.useState([0, 0, 0, 0, 0, 0])
+  const [multistringMode, setMultistringMode] = React.useState(false);
 
   function addNote(newStrings){
     var string = null;
     var fret = null;
     for (let i = 0; i < 6; i++){
 
-      if (newStrings[i] != 0){
+      if (newStrings[i] != 0 && strings[i] != -1){
         string = i;
 
         if (newStrings[i] == -1) newStrings[i] = 0;
@@ -24,8 +25,14 @@ function Editor() {
       }
     }
 
-    let newNote = {"fret": fret, "string": string}
+    if (string == null || fret == null) return;
+
+
+    let newNote = {"fret": fret, "string": string, "multistring": multistringMode}
     setNotes((oldNotes) => [...oldNotes, newNote]);
+
+    // Reset fretboard if disabled
+    resetFretboard();
   }
 
   let spacing = 2;
@@ -33,16 +40,57 @@ function Editor() {
   function renderStrings(){
     let display = [];
 
-      for (let i = 0; i < 6; i++){
-        let temp = `${['e','B','G','D','A','E'][i]}|` + "-".repeat(spacing)
+    // First find if there are hammer on, slides, or pull offs in certain locations
+    let specialCharacters = [];
+    for (let j = 0; j < notes.length; j++){
+      if (["h","p","/"].includes(notes[j].fret)){
+        specialCharacters.push(j - 1);
+        specialCharacters.push(j);
+      }
+    }
+  
+    // Initalize each string
+    for (let i = 0; i < 6; i++){
+      display.push(`${['e','B','G','D','A','E'][i]}|` + "-".repeat(spacing));
+    }
 
-
-        for (let j = 0; j < notes.length; j++){
-            temp += (notes[j].string == i ? notes[j].fret.toString() : '-') + "-".repeat(spacing - 1);
+    let chordLine = 0;
+    let chordStarted = false;
+    let fretsSeen = []
+      for (let j = 0; j < notes.length; j++){
+        if (notes[j].multistring && !chordStarted){
+          chordStarted = true;
+          chordLine = display[0].length;
+          fretsSeen = []
         }
 
-        display.push(temp);
+        // End of chord
+        if (chordStarted && !notes[j].multistring){
+          chordStarted = false;
+
+          for (let i = 0; i < 6; i++){
+
+              display[i] += "-".repeat(spacing - (fretsSeen.includes(i) ? 1 : 0));
+          }
+
+        }
+
+        for (let i = 0; i < 6; i++){
+
+          if (chordStarted && notes[j].string == i && !fretsSeen.includes(i)){
+            fretsSeen.push(i)
+            display[i] += (notes[j].string == i ? notes[j].fret.toString() : '') + "";
+          }else if(chordStarted){
+
+          }
+          else{
+            let ignoreExtraSpace = specialCharacters.includes(j)  
+            display[i] += (notes[j].string == i ? notes[j].fret.toString() : '-') + "-".repeat(ignoreExtraSpace ? 0 : spacing - 1);
+          }
+         
+        }
       }
+
 
     setDisplayedNotes(display);
   }
@@ -114,9 +162,29 @@ function Editor() {
   };
 
   const redirectToSongPage = (songName) => {
-    const formattedName = songName.replace(/\s+/g, '-').toLowerCase(); // Format the song name to create the URL
-    navigate(`/songs/${formattedName}`); // Navigate to the song page
+
+    navigate(`/song/${songName}`); // Navigate to the song page
   };
+
+  function addToNotation(symbol){
+    if (notes.length == 0 || (["p","/","h"].includes(notes[notes.length - 1].fret))) return;
+
+    let lastFret = notes[notes.length - 1].fret;
+    let lastString = notes[notes.length - 1].string;
+
+    setNotes((oldNotes) => [...oldNotes, {"fret": symbol, "string": lastString}])
+
+    // Disable all strings but last for next note
+    let nextStrings = [];
+    for (let i = 0; i < 6; i++){
+      nextStrings.push(lastString == i ? 0 : -1);
+    }
+    setStrings(nextStrings);
+  }
+
+  function resetFretboard(){
+    setStrings([0,0,0,0,0,0]);
+  }
 
   return (
 
@@ -152,6 +220,12 @@ function Editor() {
         </div>
 
         <div id="bottom-content">
+            <div id="functionality-button-holder">
+              <div id="hammer-on-button" className="button-56" onClick={() => addToNotation("h")}>Hammer On</div>
+              <div id="slide-button" className="button-56" onClick={() => addToNotation("/")}>Slide</div>
+              <div id="pull-off-button" className="button-56" onClick={() => addToNotation("p")}>Pull Off</div>
+              <div id="pull-off-button" className="button-56" onClick={() => setMultistringMode((multistringMode) => !multistringMode)}>Multi-string mode:  {multistringMode ? <p>ON</p> : <p>OFF</p>}</div>
+            </div>
             <Guitar className="guitarController" strings={strings} onChange={addNote} />
         </div>
      
