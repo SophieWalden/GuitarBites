@@ -13,3 +13,26 @@
     top: 0;
     right: 10vw;
 }
+
+#checkout-list{
+    display: flex;
+    flex-direction: column;
+}
+#checkout-list h3{
+    padding-bottom: 2vh;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: rgb(221, 229, 232);
+}
+
+#checkout-list h4{
+    font-size: 1.25vw;
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
+    transition: all 0.5s ease-in-out;
+}
+
+#checkout-list h4:hover{
+    transform: translateY(-2px);
+    color: lightblue;
+}

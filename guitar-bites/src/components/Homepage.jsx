@@ -4,6 +4,7 @@ import Guitar from 'react-guitar'
 import React from 'react';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { storage } from '../firebaseConfig';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function Homepage() {
   
@@ -17,6 +18,17 @@ function Homepage() {
 
         
           <p id="site-description">Guitar Bites is designed as an easy way to create and share small guitar tabs</p>
+
+          
+          <br></br>
+          <div id="checkout-list">
+            <h3>Checkout these features:</h3>
+            <br></br>
+             <Link to={"/Editor"}><h4>Builtin Tab Editor</h4></Link>
+             <Link to={"/SongList"}><h4>User-created Sharable Tabs</h4></Link>
+             <Link to={"/Setlist"}><h4>Our New Setlist Creator</h4></Link>
+          </div>
+  
 
           {/* <div>
             <h3 className="font-bold">Why was Guitar Bites Created?</h3>

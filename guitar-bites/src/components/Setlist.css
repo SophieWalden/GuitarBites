@@ -1,0 +1,121 @@
+
+
+#setlist-left-content{
+    width: 30vw;
+    background-color: rgb(153, 120, 95);
+    height: 90vh;
+
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#setlist-adder{
+    width: 28vw;
+    height: 30vh;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+#setlist-publish{
+    width: 28vw;
+    height: 50vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.singular-song-display{
+    font-size: 2vw;
+    transition: all 0.1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-top: -0.5vh;
+}
+
+.singular-song-display:hover{
+    color: lightblue;
+    text-decoration: underline;
+    transform: translateY(-4px);
+}
+
+.singular-song-holder{
+    display: flex;
+    width: 50vw;
+    height: 5vh;
+    justify-content: start;
+    align-items: center;
+    gap: 2vw;
+}
+
+.remove-song-button{
+    width: 3.5vh;
+    height: 3.5vh;
+    background-color: rgb(108, 73, 73);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: solid rgb(212, 35, 35) 1px;
+    color: rgb(190, 176, 176);
+    transition: all 0.2s ease-in-out;
+}
+
+.remove-song-button:hover{
+    transform: translateY(-2px);
+    background-color:  rgb(90, 54, 54);
+}
+
+
+#setlist-viewer{
+    width: 60vw;
+    height: 90vh;
+    background-color: rgb(138, 107, 82);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+    padding-top: 5vh;
+    overflow-y: auto;
+}
+
+.value-entry{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    text-align: center;
+    font-size: 1.25vw;
+}
+
+.value-entry input{
+    text-align: center;
+}
+
+
+
+.setlist-container{
+    width: 100vw;
+    height: 95vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#title-enter{
+    font-size: 1.25vw;
+    text-align: center;
+    width: 20vw;
+}

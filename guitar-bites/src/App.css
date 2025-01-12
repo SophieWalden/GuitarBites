@@ -2,9 +2,11 @@
   display: flex;
   width: 100vw;
   height: 5vh;
-  background-color: rgba(119, 89, 58, 0.254);
+  background-color: rgb(154, 117, 117);
   justify-content: space-evenly;
   align-items: center;
+  z-index: -1;
+  border-bottom: solid rgba(0, 0, 0, 0.381) 3px;
 }
 
 #song-list-container{
@@ -57,6 +59,53 @@
   text-decoration: none;
 }
 
+/* CSS */
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #d3d3d8;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #08080b;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+
 
 
 .tab-string{
@@ -69,6 +118,10 @@
 
 body{
   background-color: burlywood;
+  box-shadow: 0px 0vw 2vw 0vw black inset;
+  width: 100vw;
+  height: 100vh;
+
 }
 
 .App-logo {
@@ -91,6 +144,7 @@ body{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
 }
 
 .App-link {
@@ -118,4 +172,22 @@ body{
 .song-holder{
   height: 80vh;
 
+}
+
+.navbar-buttons{
+  z-index: 1;
+  width: 15vw;
+  height: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color:rgba(119, 89, 58, 0.254);
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-buttons:hover{
+  background-color:rgba(119, 89, 58, 0.454);
+  transform: translateY(-1px);
 }

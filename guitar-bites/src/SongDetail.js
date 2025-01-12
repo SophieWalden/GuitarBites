@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchSongsData } from './fetchSongsData'; // Adjust the import path as needed
+import { fetchSongsData } from './fetchSongsData'; 
 
 const SongDetail = () => {
-  const { songKey } = useParams();  // Get the songKey from the URL parameters
+  const { songKey } = useParams(); 
   const [song, setSong] = useState(null);
 
   useEffect(() => {

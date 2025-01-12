@@ -204,7 +204,7 @@ function Editor() {
 
             <div id="edit-buttons">
                     <form onSubmit={handleSubmit} id="submit-form">
-                    {/* Step 2: Create an input field */}
+              
                     <input
                         id="title-enter"
                         type="text"
@@ -212,7 +212,7 @@ function Editor() {
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Enter name for your creation"
                     />
-                    {/* Create a button */}
+          
                     <button type="submit" className="button-53" id="save-button">Save</button>
                     </form>
            
