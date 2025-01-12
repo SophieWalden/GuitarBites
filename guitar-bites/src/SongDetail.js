@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchSongsData } from './fetchSongsData'; 
+import { Helmet } from 'react-helmet-async';
 
 const SongDetail = () => {
   const { songKey } = useParams(); 
@@ -100,6 +101,12 @@ const SongDetail = () => {
 
   return (
     <div className="song-display">
+
+      <Helmet>
+                  <title>Guitar Bites Setlist Viewer</title>
+                  <meta property="og:title" content="Song Viewer" />
+                  <meta property="og:description" content="A Song has been shared with you" />
+              </Helmet>
 
       <h3>{song.Name}</h3>
       <div id="note-display-list">

@@ -7,7 +7,7 @@ import { storage } from '../firebaseConfig';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { fetchSetlistData } from '../fetchSetlistData';
-
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -47,6 +47,13 @@ function SetlistViewer() {
   
     return (
       <div className="setlist-viewer-container">
+        <Helmet>
+            <title>Guitar Bites Setlist Viewer</title>
+            <meta property="og:title" content="Setlist Viewer" />
+            <meta property="og:description" content="A Setlist has been shared with you" />
+            <meta property="og:image" content="https://www.setlist.fm/widgets/setlist-image-v1?id=33f5f865" />
+        </Helmet>
+        
         <div id="setlist-display-viewer">
 
             <h3 className="setlist-display-title">{setlistKey}</h3>
