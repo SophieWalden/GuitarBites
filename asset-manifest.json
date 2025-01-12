@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/GuitarBites/static/css/main.9dfcff48.css",
-    "main.js": "/GuitarBites/static/js/main.071b04a7.js",
+    "main.css": "/GuitarBites/static/css/main.1bf43d75.css",
+    "main.js": "/GuitarBites/static/js/main.f11eb7ad.js",
     "static/js/453.12af7c2c.chunk.js": "/GuitarBites/static/js/453.12af7c2c.chunk.js",
     "static/media/logo.svg": "/GuitarBites/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/GuitarBites/index.html",
-    "main.9dfcff48.css.map": "/GuitarBites/static/css/main.9dfcff48.css.map",
-    "main.071b04a7.js.map": "/GuitarBites/static/js/main.071b04a7.js.map",
+    "main.1bf43d75.css.map": "/GuitarBites/static/css/main.1bf43d75.css.map",
+    "main.f11eb7ad.js.map": "/GuitarBites/static/js/main.f11eb7ad.js.map",
     "453.12af7c2c.chunk.js.map": "/GuitarBites/static/js/453.12af7c2c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9dfcff48.css",
-    "static/js/main.071b04a7.js"
+    "static/css/main.1bf43d75.css",
+    "static/js/main.f11eb7ad.js"
   ]
 }
