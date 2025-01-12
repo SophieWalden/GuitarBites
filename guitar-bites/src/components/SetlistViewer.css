@@ -1,4 +1,13 @@
+.setlist-display-song {
+    font-size: 1.5vw;
+    transition: 0.2s all ease-in-out;
+}
 
+@media only screen and (max-width: 900px) {
+    .setlist-display-song {
+        font-size: 3.5vw !important;
+    }
+}
 
 .setlist-viewer-container{
     width: 100vw;
@@ -40,10 +49,7 @@
     gap: 1vh;
 }
 
-.setlist-display-song{
-    font-size: 1.5vw;
-    transition: 0.2s all ease-in-out;
-}
+
 
 .setlist-display-song:hover{
     color: lightblue;
